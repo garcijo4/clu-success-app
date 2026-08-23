@@ -8,6 +8,7 @@ import {
   hasAnyReflections,
 } from '@/lib/exportReflections';
 import Footer from '@/components/Footer';
+import SupportNote from '@/components/SupportNote';
 
 export default function AboutPage() {
   const { state, ready, resetAll } = useStore();
@@ -46,6 +47,25 @@ export default function AboutPage() {
         any order, review with flashcards, and use the reflection activities to think
         through how the ideas apply to you.
       </p>
+
+      <h2 className="mt-6 font-display text-lg font-semibold">Questions or problems?</h2>
+
+      <p className="mt-2 leading-relaxed text-body">
+
+        If anything in the app is broken, confusing, or wrong, please email Dr. John
+
+        Garcia. Include what you were doing and what phone or browser you were using —
+
+        it makes the fix much faster.
+
+      </p>
+
+      <div className="mt-3">
+
+        <SupportNote />
+
+      </div>
+
 
       <h2 className="mt-6 font-display text-lg font-semibold">Your privacy</h2>
       <p className="mt-2 leading-relaxed text-body">

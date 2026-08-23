@@ -6,6 +6,7 @@ import { buildReflectionsMarkdownFromChapters } from '../src/lib/reflectionsMark
 const chapter: Chapter = {
   slug: 'chapter', number: 1, title: 'Starting', studentSubtitle: '',
   themeColor: '#1E5989', themeColorDark: '#4796C1', blurb: '', keyIdeas: [],
+  summary: [],
   sections: [], openstaxUrl: '', flashcards: [],
   assessments: [
     {

@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import { useStore } from '@/lib/storage';
 import { accentStyle } from '@/lib/accent';
 import Footer from '@/components/Footer';
+import SupportNote from '@/components/SupportNote';
 
 export interface HomeChapter {
   slug: string;
@@ -14,6 +15,8 @@ export interface HomeChapter {
   themeColor: string;
   themeColorDark: string;
   keyIdeas: string[];
+  /** Pre-lowercased summary text, for search only. */
+  summaryText: string;
   sections: string[];
   flashcards: { id: string; front: string }[];
   assessments: { id: string }[];
@@ -51,7 +54,8 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
           chapter.sections.some((section) =>
             section.toLowerCase().includes(normalizedQuery),
           ) ||
-          chapter.keyIdeas.some((idea) => idea.toLowerCase().includes(normalizedQuery));
+          chapter.keyIdeas.some((idea) => idea.toLowerCase().includes(normalizedQuery)) ||
+          chapter.summaryText.includes(normalizedQuery);
         return { chapter, cardHits, metaHit };
       })
       .filter((result) => result.metaHit || result.cardHits.length);
@@ -78,6 +82,8 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
           ⚡ I&rsquo;ve got 5 minutes
         </Link>
       </section>
+
+      <SupportNote />
 
       {ready && lastChapter && last ? (
         <Link

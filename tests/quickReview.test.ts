@@ -14,6 +14,7 @@ function chapter(slug: string, number: number, cardIds: string[]): Chapter {
     themeColorDark: '#4796C1',
     blurb: '',
     keyIdeas: [],
+  summary: [],
     sections: [],
     openstaxUrl: '',
     flashcards: cardIds.map((id) => ({ id, front: id, back: id })),

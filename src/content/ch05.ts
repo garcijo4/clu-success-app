@@ -16,6 +16,43 @@ export const ch05: Chapter = {
     'SQ3R gives you a repeatable system for any assigned passage: Survey, Question, Read, Recite, Review.',
     'Notes only help if you return to them, because without active engagement afterward most students forget 60 to 75 percent of the material within two days.',
   ],
+  summary: [
+    {
+      heading: "Know why you're reading",
+      body:
+        'Outside of reading for fun, longer reading falls into about two categories: reading to introduce yourself to something new, and reading to more fully understand something you already know a little about. Which one you are doing should change how you attack it. New content needs more time on the calendar, because you will be looking up unfamiliar terms and stopping often to check that you are truly following it, and when you have little prior knowledge to connect it to, comprehension takes more work. Familiar content can start with a skim to find what you already know, so your real attention goes to what is new or to the parts that argue with what you thought. Watch for the overconfidence trap there, because one documentary or one article does not make you an expert; an expert is someone who has studied a subject long enough to know its competing perspectives and where the bad information hides. Early in the term, find out what each class actually wants from your reading, whether that is close reading for detail or broad familiarity with several sources, because it changes both your timing and your notes.',
+      example:
+        'Your history syllabus assigns 40 pages for Thursday and your literature syllabus assigns one short poem. The poem is not the easy one. A dense page can cost you far more time than a textbook page, so plan by difficulty, not by page count.',
+    },
+    {
+      heading: 'How long reading really takes',
+      body:
+        'You can stop guessing at reading time. Read for exactly five minutes, note how far you got, and multiply by 12, which gives you your pages per hour. Divide the total page count by that number for a real estimate, and if you plan to read actively, taking notes and asking questions as you go, plan on at least double. Say you cover 4 pages in five minutes: that is 48 pages an hour, so a 497-page novel is about 10 to 11 hours, which spread across two weeks is a little under an hour a day. Do this once for each class, because a dense economics text and a novel will not move at the same speed. And schedule the reading before the lecture it goes with, never after, since waiting to see how the lecture goes usually means not understanding the lecture either.',
+      example:
+        'A full course load can mean 10 to 15 hours of reading a week, and a syllabus line that says read chapters 4 through 6 tells you nothing about what that costs you. Time yourself for five minutes this week on the textbook you dread most. That one measurement turns a vague sense of doom into a number you can put in your calendar.',
+    },
+    {
+      heading: 'Skimming, then SQ3R',
+      body:
+        'Skimming is not glancing at a page to see what sticks; it is a real first pass and the entry point to deep reading. Look for the guides to meaning, which are headings, definitions, pull quotes, tables, and context clues, plus signal phrases like First, The purpose of this article, In conclusion, and Finally. End a skim with a few notes: terms to look up, questions you still have, and a one-line sense of the whole thing. Then go deep with SQ3R. Survey the titles, headings, introduction, summary, captions, and keywords to decide the general meaning; Question by turning each heading into a written question; Read in chunks while hunting for the answers, stopping to write notes; Recite by saying answers out loud, which adds hearing to seeing and makes the material easier to bring back; and Review by going over your notes, confirming you caught the main points and the evidence, and writing a summary of no more than about a page. Do not over-mark as you go, because the text is the information and your marks only organize it, so huge underlined blocks and cryptic circles will mean nothing to you in three weeks. Reading for college is recursive rather than linear, which means you circle back and reread to catch what the writer emphasized and what they left out; for college courses, reading is rereading, and that is normal rather than a sign you are slow.',
+      example:
+        'You have read the same paragraph in your economics textbook four times and still could not say what it was about. That is usually a missing purpose, not a comprehension failure. Turn the heading above it into a question, read the paragraph hunting for the answer, and say the answer out loud before you move on.',
+    },
+    {
+      heading: "Notes you'll actually reuse",
+      body:
+        'The Cornell Method takes about ten seconds to set up and does a lot of the work for you. Draw a horizontal line one to two inches from the bottom of the page, which is the summary area, then a vertical line above it leaving about two inches on the left for the recall column and the rest on the right for the notes column. During class you write only in the notes column, in your own words, skipping lines between ideas and using abbreviations instead of complete sentences. Do not try to transcribe everything a speaker says; listen for main ideas and the details that support them, and where you know something needs more later, write the word expand and underline it. If Cornell is not your fit, a formal outline moves from main topic to related concepts to supporting details, each indented further, and suits structured lectures; a chart with columns like What, How, Advantages, and Disadvantages suits comparing categories; and concept mapping, where main ideas are circled and supporting ideas radiate off them, suits material where the relationships matter more than the order. The best system is the one you will actually use every week, and combining pieces of several is fine. Start every set of notes with the date, the course, and the topic, and leave blank space for what you will add later.',
+      example:
+        'Your professor talks fast and you are trying to catch every word, so you end up with a wall of text and no idea what mattered. Give yourself permission to write less. If you capture the main idea and two supporting details per point, you will have better notes than the person who typed the entire lecture.',
+    },
+    {
+      heading: 'The 24 hours after class',
+      body:
+        'Notes you never return to are close to worthless. Without active engagement afterward, most students forget 60 to 75 percent of the material within two days, the pattern the 19th-century German psychologist Hermann Ebbinghaus first described and which is now called the forgetting curve, and you beat it by reviewing soon after and then often. With Cornell notes that means going back as soon as you can, ideally within eight hours and no later than 24, to fill in what you missed, add one- or two-word cues in the recall column, and write a two- or three-sentence summary at the bottom. Then cover the notes column and quiz yourself from the cues, repeating that as the term goes rather than only the night before the exam. Highlighting is a first step and not studying: read the passage first so you know the message, then mark only the term or line you truly need, because a fully highlighted page is no more useful than a blank one. And do not try to take notes and annotate them in the same class session, because that is two jobs and doing both at once usually means doing neither well.',
+      example:
+        'It is the night before the midterm, you open your notes, and one line just says Napoleon, short. You have no idea whether that mattered or why you wrote it. Twenty minutes of cleanup the afternoon after class would have turned that into a sentence you could actually study from.',
+    },
+  ],
   sections: ['The Nature and Types of Reading', 'Effective Reading Strategies', 'Taking Notes'],
   openstaxUrl: 'https://openstax.org/books/college-success/pages/5-introduction',
   flashcards: [

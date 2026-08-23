@@ -39,6 +39,14 @@ export interface Assessment {
   resultBands?: ResultBand[];
 }
 
+/** One block of the plain-language chapter summary shown on the chapter hub. */
+export interface SummarySection {
+  heading: string;
+  body: string;
+  /** A concrete, relatable scenario. Rendered as a highlighted callout. */
+  example?: string;
+}
+
 export interface Chapter {
   slug: string;
   number: number;
@@ -48,6 +56,8 @@ export interface Chapter {
   themeColorDark: string;
   blurb: string;
   keyIdeas: string[];
+  /** The concise read — enough that the textbook is for depth, not for basics. */
+  summary: SummarySection[];
   sections: string[];
   openstaxUrl: string;
   flashcards: Flashcard[];

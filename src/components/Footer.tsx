@@ -1,3 +1,5 @@
+import SupportNote from './SupportNote';
+
 export default function Footer() {
   return (
     <footer className="mt-10 border-t border-line pt-5 text-xs leading-relaxed text-body">
@@ -22,6 +24,9 @@ export default function Footer() {
         </a>
         . Access for free at openstax.org.
       </p>
+      <div className="mt-2">
+        <SupportNote variant="line" />
+      </div>
       <p className="mt-2">Built for CLU First Year Seminar.</p>
     </footer>
   );

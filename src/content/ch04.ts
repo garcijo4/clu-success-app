@@ -16,6 +16,43 @@ export const ch04: Chapter = {
     'Curriculum maps, academic advisors, and interactive planning technology are the three resources your college gives you to build and track a real plan.',
     'Plans change for reasons inside and outside your control, and asking for help is a strength rather than a weakness.',
   ],
+  summary: [
+    {
+      heading: 'Start with what you value',
+      body:
+        "Values are the basic beliefs that guide your thinking and your actions, and they steer your choices whether you have ever named them or not. Naming them makes every later decision easier, because you finally have something to measure options against. From there you set long-term goals, the ones that take years, like finishing a bachelor's degree in four years, and short-term goals, which are the action steps that break the long one into chunks you can actually finish. Short-term goals often look like a plain checklist of tasks, and that is exactly what they are supposed to look like. Build check-in points into the plan: am I hitting my short-term goals, are they still spaced so they will add up to the long-term one, and are my long-term goals still relevant or have my values shifted? Deciding to change a goal after honestly thinking it through is not failure, it usually means you know more about yourself and about the process than you did when you set it.",
+      example:
+        'One relative tells you to pick whatever field will be hiring in four years. Another tells you to do what you love and the money will follow. Both of them are handing you their values, not yours. Before you take either piece of advice, write down the five things that matter most to you, rank them, and then see which paths still look good.',
+    },
+    {
+      heading: 'Credits, degrees, and gen eds',
+      body:
+        "Courses are measured in credits, sometimes called semester hours, and a credit reflects the time you spend with the instructor and the material through class, lab, discussion, and homework. Most courses are worth one to six. An associate's degree takes a minimum of about 60 credits, roughly 20 courses, and a bachelor's takes a minimum of 120, or about 40 courses, which is where the four-year label comes from: 15 credits, about five classes, each fall and spring for four years. A bachelor's is assembled from three buckets. General education, also called the core curriculum, is more than half of it, spreading you across English composition, humanities, social science, lab science, math, technology, language or global studies, and often a first-year experience course. Major courses are about a fourth of the degree, roughly 30 credits or 10 courses, and they usually come with prerequisites, meaning some have to be taken in order. Electives are the free-choice slots, and it is worth knowing that developmental math or English courses cost as much as regular courses but do not count toward your degree total.",
+      example:
+        'You are a business major and there is an art history course sitting in your first-semester schedule, and it feels like a scheduling error or a money grab. It is neither. More than half of your degree is general education, and that is the part built to make you someone who can think across fields instead of only inside one.',
+    },
+    {
+      heading: 'Majors, minors, and fieldwork',
+      body:
+        'Most colleges want you to declare a major by the time you have finished about 30 credits. A major runs roughly 10 to 12 courses, while a minor is usually 5 to 8, is often optional, and is what some students do with their elective slots instead of unrelated classes, the way a business major might add a foreign language to aim at employers who hire bilingual people. Preprofessional tracks like premed, prelaw, and prepharmacy are often not majors at all but a recommended sequence of courses and activities you follow alongside a related major, sometimes with entrance-exam workshops and suggested summer volunteering attached. Some majors also carry requirements that happen outside a classroom: fieldwork and internships, usually a course you earn credit for; clinicals for nursing students; student teaching for education students; and service learning, which is structured community work tied to a course or a graduation requirement. Clinicals and student teaching are long, closely supervised, require background checks, and often make holding another job unrealistic while they are running, and student teaching can only happen in fall or spring because schools close in summer. If your major has any of this, ask program staff about timing now rather than the semester before.',
+      example:
+        'You are a nursing major working 25 hours a week and you assume you will keep that job straight through. Find out now when your clinicals land, because they run far longer than a class meeting. The students who learn that a year ahead are the ones not scrambling to rearrange their whole life in week three.',
+    },
+    {
+      heading: 'Building a plan that holds',
+      body:
+        'Your college hands you three planning resources, and using all three beats using one. A curriculum map is a course checklist showing the sequence that finishes your degree on schedule, though it assumes you are attending full-time and are ready for college-level math and English. An academic advisor, who might be called a success coach, counselor, or preceptor, is the expert on requirements and policies while you are the expert on your own life, and they can help you choose a major or minor, understand what the degree actually requires, calculate your GPA, navigate policies like grade appeals, and connect you with tutoring, counseling, and career services. Even where advising is not required, meeting once a semester catches drift early. The third resource is technology: degree audit systems track your progress like an interactive checklist, and student planning systems let you map several semesters ahead and register from the plan. Plan a little beyond coursework too, since a summer internship, a club you join in your first year and lead by your second or third, and real relationships with faculty are what turn into experience and recommendation letters. Use career services while you are enrolled, because the same help costs real money once you graduate.',
+      example:
+        'A friend tells you with total confidence that a certain class counts for your science requirement, so you register for it. Friends and family mean well and are also the most common source of confidently wrong information about requirements. Check it against the curriculum map or your advisor before the add and drop deadline, not after.',
+    },
+    {
+      heading: 'When the plan falls apart',
+      body:
+        "Plans change for two kinds of reasons. Internal ones are inside your control, like getting new information or realizing a path does not fit your values after all, and while they are stressful they are easier to navigate because you know why the change is happening. External ones come from outside: money, your health or a family member's health, not being admitted to a program, or a grade that means repeating a course you meant to move past. Those usually take longer to work around, so it helps to run a short set of questions: what can I control here, do I need to reconsider my values or only my goals, do my plans need to change, and what people, tools, or resources can help me revise? Asking for help is a strength rather than a weakness, especially when it comes from someone who actually knows the policies, and it is worth naming your support list ahead of time: who knows your interests, who knows the college's rules, who knows the career field, who is your unconditional cheerleader, and who could become a mentor. Just keep the final call yours, because other people can help you plan but only you set your values.",
+      example:
+        'Halfway through the semester you are headed for a D in the intro course for your own major, and telling anyone feels like admitting you do not belong here. At most colleges advising is free and often walk-in, what you say there is part of your confidential academic record, and the conversation usually turns into something concrete: wording for an email to your instructor, the hours of the tutoring lab, and a plan for the rest of the term.',
+    },
+  ],
   sections: [
     'Defining Values and Setting Goals',
     'Planning Your Degree Path',

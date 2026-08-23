@@ -12,6 +12,12 @@ export default function HomePage() {
     themeColor: chapter.themeColor,
     themeColorDark: chapter.themeColorDark,
     keyIdeas: chapter.keyIdeas,
+    // Headings plus bodies, flattened once on the server so search can match
+    // summary content without shipping the structured blocks to the client.
+    summaryText: chapter.summary
+      .map((section) => `${section.heading} ${section.body}`)
+      .join(' ')
+      .toLowerCase(),
     sections: chapter.sections,
     flashcards: chapter.flashcards.map(({ id, front }) => ({ id, front })),
     assessments: chapter.assessments.map(({ id }) => ({ id })),

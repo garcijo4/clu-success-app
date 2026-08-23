@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { Chapter } from '@/lib/types';
 import { useStore } from '@/lib/storage';
 import Footer from '@/components/Footer';
+import ChapterSummary from '@/components/ChapterSummary';
 import { accentStyle } from '@/lib/accent';
 
 export default function ChapterHub({ chapter }: { chapter: Chapter }) {
@@ -48,6 +49,8 @@ export default function ChapterHub({ chapter }: { chapter: Chapter }) {
           ))}
         </ul>
       </section>
+
+      <ChapterSummary sections={chapter.summary} chapterTitle={chapter.title} />
 
       <div className="mb-6 space-y-3">
         <Link

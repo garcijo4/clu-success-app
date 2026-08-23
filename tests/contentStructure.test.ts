@@ -41,3 +41,25 @@ test('health chapter avoids prohibited screening and crisis content', () => {
   }
   assert.equal(health.includes('screening tool'), false);
 });
+
+test('every chapter ships a substantive plain-language summary', () => {
+  for (const chapter of chapters) {
+    assert.ok(
+      chapter.summary.length >= 3,
+      `${chapter.slug} has only ${chapter.summary.length} summary blocks`,
+    );
+    for (const section of chapter.summary) {
+      assert.ok(section.heading.trim().length > 0, `${chapter.slug} has an empty heading`);
+      const sentences = (section.body.match(/[.!?]+(\s|$)/g) ?? []).length;
+      assert.ok(
+        sentences >= 4,
+        `${chapter.slug} / "${section.heading}" has only ${sentences} sentences`,
+      );
+    }
+    const withExamples = chapter.summary.filter((section) => section.example?.trim()).length;
+    assert.ok(
+      withExamples >= 3,
+      `${chapter.slug} has only ${withExamples} summary examples`,
+    );
+  }
+});
