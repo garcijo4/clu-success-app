@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Cal Lutheran brand tokens.
+  Light is the base; .dark redefines only what changes (design plan §5.1a).
+  Values are space-separated RGB so Tailwind's <alpha-value> works.
+*/
+:root {
+  --bg: 250 249 252; /* #FAF9FC */
+  --surface: 255 255 255;
+  --elevated: 255 255 255;
+  --line: 229 225 236; /* #E5E1EC */
+  --ink: 31 26 46; /* #1F1A2E */
+  --body: 74 68 88; /* #4A4458 */
+  --brand: 59 35 96; /* #3B2360 CLU primary purple */
+}
+
+.dark {
+  --bg: 20 17 28; /* #14111C purple-tinted near-black */
+  --surface: 30 26 42; /* #1E1A2A */
+  --elevated: 42 36 56; /* #2A2438 */
+  --line: 58 51 72; /* #3A3348 */
+  --ink: 242 240 247; /* #F2F0F7 */
+  --body: 185 179 199; /* #B9B3C7 */
+  --brand: 106 76 146; /* #6A4C92 — primary purple is invisible on dark */
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/*
+  Chapter accent colors. A wrapper sets --accent-light / --accent-dark inline
+  and the active theme picks one, so accents stay legible in both themes.
+*/
+[data-accent] {
+  --accent: var(--accent-light);
+  --accent-text: var(--accent-text-light, var(--accent));
+}
+.dark [data-accent] {
+  --accent: var(--accent-dark);
+  --accent-text: var(--accent-text-dark, var(--accent));
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-size: 16px;
+  line-height: 1.6;
+  overscroll-behavior-y: none;
+}
+
+/* Focus visibility: gold on dark surfaces, purple on light ones. */
+:focus-visible {
+  outline: 3px solid #ffc222;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.card-flip {
+  transform-style: preserve-3d;
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-flip.is-flipped {
+  transform: rotateY(180deg);
+}
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
+/* Respect reduced motion: crossfade instead of flipping/sliding. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /*
+    Without the rotation, backface-visibility can't hide the inactive face,
+    so swap the faces with opacity instead of flipping.
+  */
+  .card-flip,
+  .card-flip.is-flipped {
+    transform: none;
+    transition: none;
+  }
+  .card-face {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
+  }
+  .card-flip:not(.is-flipped) .card-face-back,
+  .card-flip.is-flipped .card-face-front {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
