@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { chapters } from '../src/content';
+import { chapterCatalog } from '../src/content/catalog';
 
 test('content inventory and IDs remain structurally valid', () => {
   assert.equal(chapters.length, 12);
@@ -9,6 +10,30 @@ test('content inventory and IDs remain structurally valid', () => {
   for (const chapter of chapters) {
     const ids = chapter.flashcards.map((card) => card.id);
     assert.equal(new Set(ids).size, ids.length, `duplicate flashcard ID in ${chapter.slug}`);
+  }
+});
+
+test('the lightweight chapter catalog stays in sync with the source content', () => {
+  assert.deepEqual(
+    chapterCatalog.map(({ slug, title }) => ({ slug, title })),
+    chapters.map(({ slug, title }) => ({ slug, title })),
+  );
+});
+
+test('activity introductions speak to students instead of describing source editing', () => {
+  const intros = chapters
+    .flatMap((chapter) => chapter.assessments.map((assessment) => assessment.intro))
+    .join(' ')
+    .toLowerCase();
+  for (const phrase of [
+    'adapted from',
+    'analysis question',
+    'chapter opening survey',
+    'student survey',
+    'drawn straight from',
+    'pulled straight from',
+  ]) {
+    assert.equal(intros.includes(phrase), false, `activity intro contains “${phrase}”`);
   }
 });
 
@@ -45,8 +70,8 @@ test('health chapter avoids prohibited screening and crisis content', () => {
 test('every chapter ships a substantive plain-language summary', () => {
   for (const chapter of chapters) {
     assert.ok(
-      chapter.summary.length >= 3,
-      `${chapter.slug} has only ${chapter.summary.length} summary blocks`,
+      chapter.summary.length >= 5 && chapter.summary.length <= 7,
+      `${chapter.slug} has ${chapter.summary.length} summary blocks; expected 5–7`,
     );
     for (const section of chapter.summary) {
       assert.ok(section.heading.trim().length > 0, `${chapter.slug} has an empty heading`);

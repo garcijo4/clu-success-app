@@ -20,7 +20,11 @@ export default function HomePage() {
       .toLowerCase(),
     sections: chapter.sections,
     flashcards: chapter.flashcards.map(({ id, front }) => ({ id, front })),
-    assessments: chapter.assessments.map(({ id }) => ({ id })),
+    assessments: chapter.assessments.map(({ id, kind, items }) => ({
+      id,
+      kind,
+      items: items.map(({ id: itemId }) => ({ id: itemId })),
+    })),
   }));
 
   return <HomePageClient chapters={catalog} />;

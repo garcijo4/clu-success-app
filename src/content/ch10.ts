@@ -162,7 +162,7 @@ export const ch10: Chapter = {
       kind: 'likert',
       estMinutes: 3,
       intro:
-        "Adapted from the chapter's student survey. Rate each statement from 1 (least like me) to 5 (most like me) — this is a snapshot of where you're starting, not a grade.",
+        "Take a private snapshot of your money habits today. Rate each statement from 1 (least like me) to 5 (most like me) — this is a starting point, not a grade.",
       items: [
         { id: 'c10-a1-1', text: 'I actively and regularly plan and monitor my finances.' },
         { id: 'c10-a1-2', text: 'I know roughly how much money comes in and goes out each month.' },
@@ -214,7 +214,7 @@ export const ch10: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        'Concrete first steps drawn from the chapter. You do not have to do them all at once — check off one, then come back for the next.',
+        'Start with one concrete money move, then come back for the next. You do not have to do them all at once.',
       items: [
         { id: 'c10-a3-1', text: 'List your last ten purchases and mark each one as a need or a want, then compare the two totals.' },
         { id: 'c10-a3-2', text: 'Build a one-month budget with three sections — net income, saving and investing, expenses — and adjust it until the balance is zero.' },

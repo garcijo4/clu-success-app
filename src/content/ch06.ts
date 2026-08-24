@@ -167,7 +167,7 @@ export const ch06: Chapter = {
       kind: 'likert',
       estMinutes: 3,
       intro:
-        'Adapted from the chapter opening survey on test confidence. Rate each statement from 1 (least like me) to 5 (most like me), answering for how you actually study, not how you plan to.',
+        'Take a snapshot of how you prepare for tests right now. Rate each statement from 1 (least like me) to 5 (most like me), answering for how you actually study, not how you plan to.',
       items: [
         { id: 'c6-l1', text: 'I set aside enough time to prepare for tests.' },
         {
@@ -231,7 +231,7 @@ export const ch06: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        'Practical steps from the chapter you can put in place before your next test. Work down the list once and most of it becomes routine.',
+        'Put these steps in place before your next test. Work down the list once and most of it becomes routine.',
       items: [
         {
           id: 'c6-cl1',

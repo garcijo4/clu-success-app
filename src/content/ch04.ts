@@ -50,7 +50,7 @@ export const ch04: Chapter = {
       body:
         "Plans change for two kinds of reasons. Internal ones are inside your control, like getting new information or realizing a path does not fit your values after all, and while they are stressful they are easier to navigate because you know why the change is happening. External ones come from outside: money, your health or a family member's health, not being admitted to a program, or a grade that means repeating a course you meant to move past. Those usually take longer to work around, so it helps to run a short set of questions: what can I control here, do I need to reconsider my values or only my goals, do my plans need to change, and what people, tools, or resources can help me revise? Asking for help is a strength rather than a weakness, especially when it comes from someone who actually knows the policies, and it is worth naming your support list ahead of time: who knows your interests, who knows the college's rules, who knows the career field, who is your unconditional cheerleader, and who could become a mentor. Just keep the final call yours, because other people can help you plan but only you set your values.",
       example:
-        'Halfway through the semester you are headed for a D in the intro course for your own major, and telling anyone feels like admitting you do not belong here. At most colleges advising is free and often walk-in, what you say there is part of your confidential academic record, and the conversation usually turns into something concrete: wording for an email to your instructor, the hours of the tutoring lab, and a plan for the rest of the term.',
+        'Halfway through the semester you are headed for a D in the intro course for your own major, and telling anyone feels like admitting you do not belong here. Contact the advising office and ask how to meet with an advisor. The conversation can turn into something concrete: wording for an email to your instructor, questions to ask about tutoring, and a plan for the rest of the term.',
     },
   ],
   sections: [
@@ -193,7 +193,7 @@ export const ch04: Chapter = {
           max: 16,
           label: 'Just getting oriented',
           advice:
-            'You are at the very start of this, and that is a completely normal place to be in your first year. Pick one small step this week: use the values list in this chapter to name your top five values, then write down one long-term goal and one short-term action step that moves toward it. After that, book a walk-in appointment with an academic advisor, who is free and whose job is to know the requirements you do not know yet.',
+            'You are at the very start of this, and that is a completely normal place to be in your first year. Pick one small step this week: use the values list to name your top five values, then write down one long-term goal and one short-term action step that moves toward it. After that, contact your academic advising office and ask how to meet with an advisor who can help you understand your requirements.',
         },
         {
           min: 17,
@@ -228,7 +228,7 @@ export const ch04: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        'Adapted from the chapter’s planning readiness checklist. Tick what you already know, and for anything you cannot answer yet, ask your instructor or advisor or look it up on your college website.',
+        'See which pieces of your academic plan you already know. For anything you cannot answer yet, ask your instructor or advisor or look it up on your college website.',
       items: [
         {
           id: 'c4-cl1',

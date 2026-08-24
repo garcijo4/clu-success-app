@@ -6,6 +6,7 @@ import { useStore } from '@/lib/storage';
 import Footer from '@/components/Footer';
 import ChapterSummary from '@/components/ChapterSummary';
 import { accentStyle } from '@/lib/accent';
+import { isAssessmentComplete } from '@/lib/assessment';
 
 export default function ChapterHub({ chapter }: { chapter: Chapter }) {
   const { chapter: getState, ready } = useStore();
@@ -13,7 +14,9 @@ export default function ChapterHub({ chapter }: { chapter: Chapter }) {
 
   const gotIt = ready ? state.flashcardsGotIt.length : 0;
   const activitiesDone = ready
-    ? chapter.assessments.filter((a) => state.assessments[a.id]?.completedAt).length
+    ? chapter.assessments.filter((assessment) =>
+        isAssessmentComplete(assessment, state.assessments[assessment.id]),
+      ).length
     : 0;
   const cardMinutes = Math.max(1, Math.round(chapter.flashcards.length / 4));
 
@@ -35,8 +38,8 @@ export default function ChapterHub({ chapter }: { chapter: Chapter }) {
         <p className="mt-3 leading-relaxed">{chapter.blurb}</p>
       </header>
 
-      <section className="mb-6">
-        <h2 className="mb-2 font-display text-lg font-semibold">Key ideas</h2>
+      <section className="mb-6 rounded-2xl border border-line bg-surface p-4">
+        <h2 className="mb-3 font-display text-lg font-semibold">Key ideas</h2>
         <ul className="space-y-2">
           {chapter.keyIdeas.map((idea, i) => (
             <li key={i} className="flex gap-2.5 text-body">
@@ -88,13 +91,13 @@ export default function ChapterHub({ chapter }: { chapter: Chapter }) {
           href={chapter.openstaxUrl}
           target="_blank"
           rel="noreferrer"
-          className="flex min-h-[44px] items-center text-brand underline underline-offset-4"
+          className="flex min-h-[44px] items-center text-brand underline underline-offset-4 dark:text-clu-goldAlt"
         >
           Read this chapter free at OpenStax ↗
         </a>
         <Link
           href={`/ask?topic=${chapter.slug}`}
-          className="flex min-h-[44px] items-center text-brand underline underline-offset-4"
+          className="flex min-h-[44px] items-center text-brand underline underline-offset-4 dark:text-clu-goldAlt"
         >
           Ask the chatbot about this chapter
         </Link>

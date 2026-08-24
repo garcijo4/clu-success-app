@@ -19,7 +19,7 @@ export default function ErrorPage({ reset }: { error: Error; reset: () => void }
         </button>
         <Link
           href="/"
-          className="flex min-h-[48px] items-center justify-center rounded-full border border-line px-5 font-semibold text-brand"
+          className="flex min-h-[48px] items-center justify-center rounded-full border border-line px-5 font-semibold text-brand dark:text-clu-goldAlt"
         >
           Back to home
         </Link>

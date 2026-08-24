@@ -159,7 +159,7 @@ export const ch12: Chapter = {
       kind: 'likert',
       estMinutes: 3,
       intro:
-        "Adapted from the chapter's student survey. Rate each statement from 1 (least like me) to 5 (most like me). Nobody is supposed to have this all sorted out in year one — this just shows you where to aim next.",
+        "Take a snapshot of how career planning feels right now. Rate each statement from 1 (least like me) to 5 (most like me). Nobody is supposed to have this all sorted out in year one.",
       items: [
         { id: 'c12-a1-1', text: 'I feel settled about my major, or about my ability to choose one soon.' },
         { id: 'c12-a1-2', text: 'I know what kinds of jobs I could get with my major.' },
@@ -199,7 +199,7 @@ export const ch12: Chapter = {
       kind: 'reflection',
       estMinutes: 6,
       intro:
-        "Adapted from the chapter's activity on career myths. Advice comes at you from family, friends, and the news, and some of it quietly shapes decisions you have not examined.",
+        "Advice comes at you from family, friends, and the news, and some of it quietly shapes decisions you have not examined. This is a chance to test those assumptions.",
       items: [],
       prompt:
         'Think about the events and conversations of the past few years that have pushed you toward a career goal. Have any of the chapter\'s myths shaped your choices — that a degree alone guarantees a good job, that there is one perfect job out there, that you cannot get a good job with a particular major, that you should chase a "hot" field, that you should feel passionate about your work every day, or that your path should be a straight line? Name the one that has had the most pull on you and describe where it came from. Are you being called to reconsider any earlier decision because of it, and why or why not? Finally, what other preconceptions might be quietly blocking you from moving toward the plan you actually want?',

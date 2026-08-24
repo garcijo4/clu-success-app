@@ -6,6 +6,7 @@ import type { Assessment, Chapter } from '@/lib/types';
 import { useStore } from '@/lib/storage';
 import AssessmentView from '@/components/AssessmentView';
 import { accentStyle } from '@/lib/accent';
+import { isAssessmentComplete } from '@/lib/assessment';
 
 const KIND_LABEL: Record<Assessment['kind'], string> = {
   likert: 'Self check-in',
@@ -74,7 +75,9 @@ export default function ReflectList({ chapter }: { chapter: Chapter }) {
 
           <ul className="space-y-3">
             {chapter.assessments.map((a) => {
-              const done = ready && Boolean(state.assessments[a.id]?.completedAt);
+              const saved = state.assessments[a.id];
+              const done = ready && isAssessmentComplete(a, saved);
+              const checkedCount = a.kind === 'checklist' ? saved?.checklist?.length ?? 0 : 0;
               return (
                 <li key={a.id}>
                   <button
@@ -95,9 +98,13 @@ export default function ReflectList({ chapter }: { chapter: Chapter }) {
                         <span className="rounded-full border border-line px-2 py-0.5 text-body">
                           ~{a.estMinutes} min
                         </span>
-                        {done && (
+                        {a.kind === 'checklist' && checkedCount > 0 && !done ? (
+                          <span className="text-[color:var(--accent-text)]">
+                            {checkedCount}/{a.items.length} checked
+                          </span>
+                        ) : done ? (
                           <span className="text-[color:var(--accent-text)]">✓ Done</span>
-                        )}
+                        ) : null}
                       </span>
                       <span className="mt-2 block font-display text-lg font-semibold">
                         {a.title}
@@ -112,7 +119,7 @@ export default function ReflectList({ chapter }: { chapter: Chapter }) {
 
           <Link
             href="/about#my-work"
-            className="mt-5 inline-flex min-h-[44px] items-center text-sm text-brand underline underline-offset-4"
+            className="mt-5 inline-flex min-h-[44px] items-center text-sm text-brand underline underline-offset-4 dark:text-clu-goldAlt"
           >
             Download all my reflections
           </Link>

@@ -22,11 +22,17 @@ export default function AppBar() {
           >
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
               <path
-                d="M21 12a8 8 0 1 1-3.2-6.4M21 12c0 1.6-.5 3-1.3 4.2L21 21l-4.8-1.3A8 8 0 0 1 12 20"
+                d="M20.5 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20.5l1.6-4.6A8.5 8.5 0 1 1 20.5 11.5Z"
                 stroke="currentColor"
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+              />
+              <path
+                d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
               />
             </svg>
           </Link>

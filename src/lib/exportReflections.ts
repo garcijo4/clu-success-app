@@ -3,21 +3,25 @@
 // "Download all my reflections" (design plan §4.2a).
 // Everything is assembled client-side; nothing is uploaded.
 
-import { chapters } from '@/content';
 import type { AppState } from './types';
 import {
   buildReflectionsMarkdownFromChapters,
   hasAnySavedWork,
+  type ReflectionExportChapter,
 } from './reflectionsMarkdown';
 
 export function buildReflectionsMarkdown(
+  chapters: ReflectionExportChapter[],
   state: AppState,
   exportedAt: Date = new Date(),
 ): string {
   return buildReflectionsMarkdownFromChapters(chapters, state, exportedAt);
 }
 
-export function hasAnyReflections(state: AppState): boolean {
+export function hasAnyReflections(
+  chapters: ReflectionExportChapter[],
+  state: AppState,
+): boolean {
   return hasAnySavedWork(chapters, state);
 }
 

@@ -219,7 +219,7 @@ export const ch01: Chapter = {
       kind: 'reflection',
       estMinutes: 6,
       intro:
-        "A short written reflection adapted from the chapter's Analysis Question. Write freely, since nobody grades this but you.",
+        "Your reason for being here can steady you when college gets difficult. Write freely and honestly — this stays private unless you choose to share it.",
       items: [],
       prompt:
         "Which of the six areas of adjustment (academic, cultural, emotional, financial, intellectual, and social) do you think will be the least challenging for you, and which do you think will be the most challenging? What can you do now to prepare for the more challenging transitions, and which campus resource or strategy could help you with each one?",
@@ -230,7 +230,7 @@ export const ch01: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        "Concrete moves drawn straight from this chapter. Check them off as you go, and come back to the ones you skip.",
+        "These small moves make college expectations less mysterious. Check them off as you go, and come back to the ones you skip.",
       items: [
         { id: 'c1-ck1', text: 'Read each syllabus all the way through, and note the attendance policy and how your grade is calculated.' },
         { id: 'c1-ck2', text: "Write down every professor's office hours, and visit one this month even just to introduce yourself." },

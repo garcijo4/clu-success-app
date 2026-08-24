@@ -160,7 +160,7 @@ export const ch05: Chapter = {
       kind: 'likert',
       estMinutes: 3,
       intro:
-        'Adapted from the chapter opening survey. Rate each statement from 1 (I need significant improvement) to 5 (I am doing great). Answer for how things actually are, not how you wish they were.',
+        'Take a quick look at your current reading and notetaking habits. Rate each statement from 1 (least like me) to 5 (most like me), answering for how things actually are today.',
       items: [
         { id: 'c5-l1', text: 'I am reading at a college level.' },
         { id: 'c5-l2', text: 'I take good notes that help me study for exams.' },
@@ -217,7 +217,7 @@ export const ch05: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        'Concrete steps drawn from the chapter. Work through them once and the habits mostly run themselves after that.',
+        'Set up these reading and notetaking habits once, then keep the ones that make your coursework easier to manage.',
       items: [
         {
           id: 'c5-cl1',

@@ -32,3 +32,8 @@ test('chapter accent text passes AA on card surfaces in both themes', () => {
     );
   }
 });
+
+test('brand link colors pass AA on light and dark surfaces', () => {
+  assert.ok(contrast('#3B2360', '#FFFFFF') >= 4.5, 'light brand link fails');
+  assert.ok(contrast('#FFD589', '#1E1A2A') >= 4.5, 'dark gold link fails');
+});

@@ -35,18 +35,12 @@ Or from this folder: `npx vercel` (then `npx vercel --prod`).
 
 ## Connecting the chatbot
 
-Open `src/components/ChatEmbed.tsx` and paste your bot platform's embed snippet into the
-`EMBED_HTML` template literal near the top:
+The instructor-provided Pickaxe iframe is configured in `src/components/ChatEmbed.tsx`.
+Update `CHATBOT_URL` there if the deployment changes. Notes:
 
-```ts
-const EMBED_HTML = `<script src="https://your-bot-platform.example/widget.js" ...></script>`;
-```
-
-That's the only change required. Notes:
-
-- `<script>` tags inside the snippet are re-created and injected so the widget actually
-  boots — React does not execute scripts from `dangerouslySetInnerHTML`.
-- While `EMBED_HTML` is empty, the page shows a friendly "Chatbot coming soon" placeholder.
+- The iframe is intentionally 100% wide and 800 px tall, with a 1200 px maximum width.
+- Questions are handled by the third-party chatbot service, so the page reminds students
+  to leave out private or sensitive information.
 - **Optional pre-fill:** the app sends students to `/ask?q=<question>&topic=<chapter-slug>`
   from flashcards and reflections. The question is shown in a card above the chat and
   auto-copied to the clipboard, because a page cannot type into a third-party iframe. If
@@ -74,7 +68,7 @@ The bot's system prompt is in `College_Success_Chatbot_Prompt.docx` in the paren
 
 ### Routes
 
-- `/` — home: Quick Review button, continue card, tricky cards, search, 12 chapter cards
+- `/` — home: chatbot card, continue card, tricky cards, search, 12 chapter cards, support
 - `/quick` — 10-card mixed deck, ~5 minutes
 - `/tricky` — cross-chapter deck of cards the student keeps missing
 - `/chapters/[slug]` — chapter hub

@@ -1,8 +1,20 @@
-import type { AppState, Chapter } from './types';
+import type { AppState, Assessment } from './types';
 import { findResultBand } from './assessment';
 
+export type ReflectionExportAssessment = Pick<
+  Assessment,
+  'id' | 'title' | 'kind' | 'items' | 'prompt' | 'resultBands'
+>;
+
+export interface ReflectionExportChapter {
+  slug: string;
+  number: number;
+  title: string;
+  assessments: ReflectionExportAssessment[];
+}
+
 export function buildReflectionsMarkdownFromChapters(
-  chapters: Chapter[],
+  chapters: ReflectionExportChapter[],
   state: AppState,
   exportedAt: Date = new Date(),
 ): string {
@@ -40,13 +52,22 @@ export function buildReflectionsMarkdownFromChapters(
       }
 
       if (assessment.kind === 'likert' && entry.likertAnswers) {
-        const values = Object.values(entry.likertAnswers);
+        const values = assessment.items.flatMap((item) => {
+          const value = entry.likertAnswers?.[item.id];
+          return value ? [value] : [];
+        });
         if (values.length) {
           found += 1;
-          const total = values.reduce((sum, value) => sum + value, 0);
-          const band = findResultBand(assessment.resultBands, total);
           parts.push(`### ${assessment.title} (self check-in)`);
-          if (band) parts.push(`Result: ${band.label}`);
+          if (values.length === assessment.items.length) {
+            const total = values.reduce((sum, value) => sum + value, 0);
+            const band = findResultBand(assessment.resultBands, total);
+            if (band) parts.push(`Result: ${band.label}`);
+          } else {
+            parts.push(
+              `Progress: ${values.length} of ${assessment.items.length} statements answered`,
+            );
+          }
           parts.push('');
         }
       }
@@ -75,7 +96,10 @@ export function buildReflectionsMarkdownFromChapters(
   return lines.join('\n');
 }
 
-export function hasAnySavedWork(chapters: Chapter[], state: AppState): boolean {
+export function hasAnySavedWork(
+  chapters: ReflectionExportChapter[],
+  state: AppState,
+): boolean {
   return chapters.some((chapter) => {
     const saved = state.chapters[chapter.slug];
     if (!saved?.assessments) return false;

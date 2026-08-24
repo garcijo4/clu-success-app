@@ -6,6 +6,7 @@ import { useStore } from '@/lib/storage';
 import { accentStyle } from '@/lib/accent';
 import Footer from '@/components/Footer';
 import SupportNote from '@/components/SupportNote';
+import { isAssessmentComplete } from '@/lib/assessment';
 
 export interface HomeChapter {
   slug: string;
@@ -19,7 +20,7 @@ export interface HomeChapter {
   summaryText: string;
   sections: string[];
   flashcards: { id: string; front: string }[];
-  assessments: { id: string }[];
+  assessments: { id: string; kind: 'likert' | 'reflection' | 'checklist'; items: { id: string }[] }[];
 }
 
 export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }) {
@@ -65,6 +66,15 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
   const lastChapter = last
     ? chapters.find((chapter) => chapter.slug === last.chapterSlug)
     : undefined;
+  const lastSaved = lastChapter ? state.chapters[lastChapter.slug] : undefined;
+  const continueDetail =
+    lastChapter && lastSaved && last
+      ? last.activity === 'flashcards'
+        ? `${Math.max(0, lastChapter.flashcards.length - lastSaved.flashcardsGotIt.length)} cards left`
+        : `${lastChapter.assessments.filter((assessment) =>
+            isAssessmentComplete(assessment, lastSaved.assessments[assessment.id]),
+          ).length} of ${lastChapter.assessments.length} activities complete`
+      : '';
 
   return (
     <div>
@@ -75,15 +85,28 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
         <p className="mt-1 text-sm text-white">
           Pick any chapter — there&rsquo;s no required order.
         </p>
-        <Link
-          href="/quick"
-          className="mt-4 flex min-h-[52px] w-full items-center justify-center rounded-full bg-clu-gold px-5 text-lg font-semibold text-clu-purple"
-        >
-          ⚡ I&rsquo;ve got 5 minutes
-        </Link>
       </section>
 
-      <SupportNote />
+      <Link
+        href="/ask"
+        className="mb-4 flex min-h-[76px] items-center gap-3 rounded-2xl border-2 border-clu-gold bg-clu-gold/10 p-4"
+      >
+        <span
+          aria-hidden="true"
+          className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-clu-gold text-xl text-clu-purple"
+        >
+          ?
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-semibold">Ask the College Success chatbot</span>
+          <span className="block text-sm text-body">
+            Ask a question without choosing a chapter first
+          </span>
+        </span>
+        <span aria-hidden="true" className="text-xl text-clu-gold">
+          →
+        </span>
+      </Link>
 
       {ready && lastChapter && last ? (
         <Link
@@ -97,6 +120,9 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
               Chapter {lastChapter.number} ·{' '}
               {last.activity === 'reflect' ? 'Reflections' : 'Flashcards'}
             </span>
+            {continueDetail ? (
+              <span className="block text-sm text-body">{continueDetail}</span>
+            ) : null}
           </span>
         </Link>
       ) : null}
@@ -114,13 +140,18 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
         </Link>
       ) : null}
 
-      <label htmlFor="search" className="sr-only">Search chapters and flashcards</label>
+      <div className="mb-2">
+        <label htmlFor="search" className="font-display text-lg font-semibold">
+          Find a topic
+        </label>
+        <p className="text-sm text-body">Try “procrastination,” “budget,” or “APR.”</p>
+      </div>
       <input
         id="search"
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search — try “procrastination” or “budget”"
+        placeholder="Search topics or flashcards"
         className="mb-5 w-full rounded-full border border-line bg-surface px-5 py-3 text-ink placeholder:text-body/60"
       />
 
@@ -135,7 +166,11 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
             {results.map(({ chapter, cardHits }) => (
               <li key={chapter.slug}>
                 <Link
-                  href={`/chapters/${chapter.slug}`}
+                  href={
+                    cardHits.length
+                      ? `/chapters/${chapter.slug}/flashcards?find=${encodeURIComponent(query.trim())}`
+                      : `/chapters/${chapter.slug}`
+                  }
                   data-accent
                   style={accentStyle(chapter.themeColor, chapter.themeColorDark)}
                   className="block rounded-2xl border border-line bg-surface p-4"
@@ -145,7 +180,7 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
                   {cardHits.length > 0 ? (
                     <span className="mt-1 block text-sm text-[color:var(--accent-text)]">
                       {cardHits.length} matching card{cardHits.length > 1 ? 's' : ''} —
-                      “{cardHits[0].front}”
+                      “{cardHits[0].front}” · Start there →
                     </span>
                   ) : null}
                 </Link>
@@ -162,7 +197,11 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
               : 0;
             const doneActivities = saved
               ? chapter.assessments.filter(
-                  (assessment) => saved.assessments[assessment.id]?.completedAt,
+                  (assessment) =>
+                    isAssessmentComplete(
+                      assessment,
+                      saved.assessments[assessment.id],
+                    ),
                 ).length
               : 0;
             return (
@@ -185,8 +224,16 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
                       {chapter.studentSubtitle}
                     </span>
                     {ready && (cardPercent > 0 || doneActivities > 0) ? (
-                      <span className="mt-2 text-[11px] text-body">
-                        {cardPercent}% cards · {doneActivities}/{chapter.assessments.length} activities
+                      <span className="mt-3 block">
+                        <span className="mb-1 block h-1 overflow-hidden rounded-full bg-line">
+                          <span
+                            className="block h-full rounded-full bg-[color:var(--accent)]"
+                            style={{ width: `${cardPercent}%` }}
+                          />
+                        </span>
+                        <span className="block text-[11px] text-body">
+                          {cardPercent}% cards · {doneActivities}/{chapter.assessments.length} activities
+                        </span>
                       </span>
                     ) : null}
                   </span>
@@ -196,6 +243,10 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
           })}
         </ul>
       )}
+
+      <div className="mt-6">
+        <SupportNote />
+      </div>
 
       <Footer />
     </div>

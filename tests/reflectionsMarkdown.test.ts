@@ -42,3 +42,21 @@ test('reflection export includes writing, result band, and attribution without a
   assert.doesNotMatch(markdown, /Score:/);
   assert.match(markdown, /CC BY 4\.0/);
 });
+
+test('a partial check-in exports progress and ignores answers for removed items', () => {
+  const state: AppState = {
+    version: 1,
+    chapters: {
+      chapter: {
+        flashcardsGotIt: [],
+        reviewAgainCounts: {},
+        assessments: {
+          'check-in': { likertAnswers: { a: 4, removed: 5 } },
+        },
+      },
+    },
+  };
+  const markdown = buildReflectionsMarkdownFromChapters([chapter], state);
+  assert.match(markdown, /Progress: 1 of 2 statements answered/);
+  assert.doesNotMatch(markdown, /Result:/);
+});

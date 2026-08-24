@@ -222,7 +222,7 @@ export const ch02: Chapter = {
       kind: 'reflection',
       estMinutes: 7,
       intro:
-        "A self-analysis adapted from the chapter's Analysis Question on motivation. Be honest with yourself here, since nobody else reads this.",
+        "Motivation is easier to strengthen once you can name what is helping and what is getting in the way. Be honest with yourself here; nobody else reads this.",
       items: [],
       prompt:
         "This chapter covered three major factors in your motivation as a learner: grit and perseverance, understanding your own motivations for learning, and the pitfalls of negative bias. Which of the three are you strongest in, and what makes you strong there? Now look at the two weaker areas: what makes you susceptible in each one, and for each, name one specific behavior you intend to change and how you will change it.",
@@ -233,7 +233,7 @@ export const ch02: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        "Practical moves from this chapter that you can start this week. Pick the ones that fit the courses you are taking now.",
+        "Try one or two of these practical moves this week. Pick the ones that fit the courses you are taking now.",
       items: [
         { id: 'c2-ck1', text: 'Pick one upcoming assignment and write down what you will actually be able to do with the knowledge once you have it.' },
         { id: 'c2-ck2', text: 'Name your grit partner: one classmate, instructor, staff member, or family member who will keep you motivated, and tell them.' },

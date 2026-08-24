@@ -40,7 +40,7 @@ export default function FlashcardDeck({
 }: Props) {
   const { markGotIt, markReviewAgain } = useStore();
   const speech = useSpeech();
-  const faceDescriptionId = useId();
+  const cardContentId = useId();
 
   const [shuffled, setShuffled] = useState(false);
   const [queue, setQueue] = useState<DeckCard[]>(cards);
@@ -150,7 +150,7 @@ export default function FlashcardDeck({
             <Link
               key={link.href}
               href={link.href}
-              className="flex min-h-[48px] items-center justify-center rounded-full border border-line px-5 font-semibold text-brand"
+              className="flex min-h-[48px] items-center justify-center rounded-full border border-line px-5 font-semibold text-brand dark:text-clu-goldAlt"
             >
               {link.label}
             </Link>
@@ -213,52 +213,52 @@ export default function FlashcardDeck({
 
       {/* Card */}
       <div
-        className="[perspective:1200px]"
+        className="relative [perspective:1200px]"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
+        {/*
+          Keep the readable card content outside the flip button. Screen readers
+          can read the question or answer as content, then encounter a concise
+          action instead of hearing the whole card announced as a button label.
+        */}
+        <div
+          id={cardContentId}
+          className={`card-flip grid min-h-[16rem] w-full ${flipped ? 'is-flipped' : ''}`}
+        >
+          <div
+            aria-hidden={flipped}
+            className="card-face card-face-front col-start-1 row-start-1 flex flex-col justify-center rounded-2xl border border-line bg-surface p-6"
+          >
+            <p className="font-display text-2xl font-semibold leading-snug">
+              {card.front}
+            </p>
+            <p className="mt-4 text-sm text-body">Tap to flip</p>
+          </div>
+          <div
+            aria-hidden={!flipped}
+            className="card-face card-face-back col-start-1 row-start-1 flex flex-col justify-center rounded-2xl border-2 border-[color:var(--accent)] bg-elevated p-6"
+          >
+            <p className="text-lg leading-relaxed">{card.back}</p>
+            {card.section && (
+              <p className="mt-3 text-xs uppercase tracking-wide text-body">
+                {card.section}
+              </p>
+            )}
+          </div>
+        </div>
         <button
           type="button"
           onClick={handleFlip}
           aria-pressed={flipped}
-          aria-describedby={faceDescriptionId}
+          aria-controls={cardContentId}
           aria-label={
-            flipped ? 'Show the question side' : 'Show the answer side'
+            flipped
+              ? `Show the question side for ${card.front}`
+              : `Show the answer side for ${card.front}`
           }
-          className="w-full text-left"
-        >
-          {/*
-            Both faces share one grid cell so the card grows to fit whichever
-            face is taller — a long definition must not spill outside the card.
-          */}
-          <div
-            className={`card-flip grid min-h-[16rem] w-full ${flipped ? 'is-flipped' : ''}`}
-          >
-            <div
-              aria-hidden={flipped}
-              className="card-face card-face-front col-start-1 row-start-1 flex flex-col justify-center rounded-2xl border border-line bg-surface p-6"
-            >
-              <p className="font-display text-2xl font-semibold leading-snug">
-                {card.front}
-              </p>
-              <p className="mt-4 text-sm text-body">Tap to flip</p>
-            </div>
-            <div
-              aria-hidden={!flipped}
-              className="card-face card-face-back col-start-1 row-start-1 flex flex-col justify-center rounded-2xl border-2 border-[color:var(--accent)] bg-elevated p-6"
-            >
-              <p className="text-lg leading-relaxed">{card.back}</p>
-              {card.section && (
-                <p className="mt-3 text-xs uppercase tracking-wide text-body">
-                  {card.section}
-                </p>
-              )}
-            </div>
-          </div>
-        </button>
-        <p id={faceDescriptionId} className="sr-only">
-          {flipped ? `Answer: ${card.back}` : `Question: ${card.front}`}
-        </p>
+          className="absolute inset-0 rounded-2xl"
+        />
       </div>
 
       <p className="sr-only" aria-live="polite">

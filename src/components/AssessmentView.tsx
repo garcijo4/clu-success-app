@@ -44,9 +44,11 @@ function Likert({ chapter, assessment }: { chapter: Chapter; assessment: Assessm
   const [submitted, setSubmitted] = useState(Boolean(saved.completedAt));
 
   const answeredAll = assessment.items.every((item) => answers[item.id]);
+  // Only current items count. This prevents an old answer from a revised
+  // activity (or malformed stored data) from shifting the result band.
   const total = useMemo(
-    () => Object.values(answers).reduce((a, b) => a + b, 0),
-    [answers],
+    () => assessment.items.reduce((sum, item) => sum + (answers[item.id] ?? 0), 0),
+    [answers, assessment.items],
   );
   const band = findResultBand(assessment.resultBands, total);
 
@@ -65,7 +67,7 @@ function Likert({ chapter, assessment }: { chapter: Chapter; assessment: Assessm
           <button
             type="button"
             onClick={() => setSubmitted(false)}
-            className="min-h-[48px] rounded-full border border-line px-5 font-semibold text-brand"
+            className="min-h-[48px] rounded-full border border-line px-5 font-semibold text-brand dark:text-clu-goldAlt"
           >
             Change my answers
           </button>
@@ -125,7 +127,7 @@ function Likert({ chapter, assessment }: { chapter: Chapter; assessment: Assessm
                       }}
                       className="peer sr-only"
                     />
-                    <span className="flex min-h-[56px] flex-col items-center justify-center rounded-xl border border-line px-1 text-center text-[11px] leading-tight text-body peer-checked:border-clu-gold peer-checked:bg-clu-gold peer-checked:font-semibold peer-checked:text-clu-purple peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-clu-gold">
+                    <span className="flex min-h-[64px] flex-col items-center justify-center rounded-xl border border-line px-0.5 text-center text-xs leading-tight text-body peer-checked:border-clu-gold peer-checked:bg-clu-gold peer-checked:font-semibold peer-checked:text-clu-purple peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-clu-gold">
                       <span className="text-base font-semibold">{step.value}</span>
                       <span>{step.label}</span>
                     </span>
@@ -266,7 +268,8 @@ function Checklist({ chapter, assessment }: { chapter: Chapter; assessment: Asse
       : [...checked, itemId];
     saveAssessment(chapter.slug, assessment.id, {
       checklist: next,
-      completedAt: next.length ? new Date().toISOString() : undefined,
+      completedAt:
+        next.length === assessment.items.length ? new Date().toISOString() : undefined,
     });
   };
 

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import { chapters, getChapter } from '@/content';
 import ChapterDeck from './ChapterDeck';
 
@@ -10,5 +11,9 @@ export default async function FlashcardsPage({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const chapter = getChapter(slug);
   if (!chapter) notFound();
-  return <ChapterDeck chapter={chapter} />;
+  return (
+    <Suspense fallback={<div className="h-72 animate-pulse rounded-2xl border border-line bg-surface" />}>
+      <ChapterDeck chapter={chapter} />
+    </Suspense>
+  );
 }

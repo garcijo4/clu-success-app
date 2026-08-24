@@ -44,8 +44,8 @@ export const ch11: Chapter = {
     },
     {
       heading: "Looking out for each other",
-      body: "Being safety conscious means staying aware of your surroundings and being deliberate about alcohol and drugs rather than drifting into decisions. The numbers from college students are worth knowing: 32 percent of those who drank reported doing something they later regretted and 27 percent could not remember where they were or what they did, and binge drinking is generally defined as about four drinks for women or five for men within two hours. You do not have to be an alcoholic for drinking to derail a semester through missed classes, poor exams, and late work, and if your use of anything is interfering with your health, school, relationships, or money, the student health center and campus counselors are the place to start. For everyday safety: speak up when a friend seems in trouble or something looks wrong, and get an RA or campus authority involved; learn your campus emergency system and where the blue-light phones are, and save campus security in your contacts; never leave a drink unattended or accept one from someone you do not trust; keep your phone charged, avoid dark and empty areas, and go out and come back with a group. Look up your school’s escort service before you need it, check that a rideshare car matches the license plate in the app, and tell your roommates your plans and when you expect to be back. If something does happen, get to a safe, well-lit place, call 911 or have someone call for you, contact a person you trust, and give yourself time to heal, since campus mental health services can help with recovery. Your school has legal obligations here too: under Title IX, sexual harassment and sexual violence are prohibited forms of gender discrimination, and schools must stop it, prevent it from recurring, address its effects, and protect people who report from retaliation, while the Clery Act requires colleges to notify survivors of counseling resources, reporting options, and accommodations such as changing dorms or classes.",
-      example: "It is midnight, the library is closing, and your dorm is a fifteen-minute walk across a quiet stretch of campus. This is exactly what the campus escort service and the security number are for, and both work much better if you saved them in week one instead of standing outside the library trying to find them.",
+      body: "Being safety conscious means staying aware of your surroundings and being deliberate about alcohol and drugs rather than drifting into decisions. The numbers from college students are worth knowing: 32 percent of those who drank reported doing something they later regretted and 27 percent could not remember where they were or what they did, and binge drinking is generally defined as about four drinks for women or five for men within two hours. You do not have to be an alcoholic for drinking to derail a semester through missed classes, poor exams, and late work, and if your use of anything is interfering with your health, school, relationships, or money, the student health center and campus counselors are the place to start. For everyday safety: speak up when a friend seems in trouble or something looks wrong, and get an RA or campus authority involved; learn your campus emergency system and save the campus safety contact in your phone; never leave a drink unattended or accept one from someone you do not trust; keep your phone charged, avoid dark and empty areas, and go out and come back with a group. Find out whether your school offers a safety escort or another late-night option, check that a rideshare car matches the license plate in the app, and tell your roommates your plans and when you expect to be back. If something does happen, get to a safe, well-lit place, call 911 or have someone call for you, contact a person you trust, and give yourself time to heal, since campus mental health services can help with recovery. Your school has legal obligations here too: under Title IX, sexual harassment and sexual violence are prohibited forms of gender discrimination, and schools must stop it, prevent it from recurring, address its effects, and protect people who report from retaliation, while the Clery Act requires colleges to notify survivors of counseling resources, reporting options, and accommodations such as changing dorms or classes.",
+      example: "It is midnight, the library is closing, and your dorm is a fifteen-minute walk across a quiet stretch of campus. Check the late-night safety options your school actually offers before you need them, and save the relevant number in week one instead of trying to find it while you are standing outside alone.",
     },
   ],
   sections: [
@@ -151,7 +151,7 @@ export const ch11: Chapter = {
     {
       id: 'c11-16',
       front: 'What does it mean to be safety conscious, and what does that look like on campus?',
-      back: 'It means having an awareness of potential hazards and an alertness to danger. In practice: speak up when something concerns you, learn your campus emergency system and save campus security in your phone, never leave a drink unattended, stay alert with a charged phone, and avoid walking alone at night by using your school escort service or going out with a group.',
+      back: 'It means having an awareness of potential hazards and an alertness to danger. In practice: speak up when something concerns you, learn your campus emergency system and save the campus safety contact in your phone, never leave a drink unattended, stay alert with a charged phone, and avoid walking alone at night by checking which safety options your school offers or going out with a group.',
       section: 'Your Safety',
     },
   ],
@@ -202,7 +202,7 @@ export const ch11: Chapter = {
       kind: 'reflection',
       estMinutes: 6,
       intro:
-        "Adapted from the chapter's own reflection questions on sleep and daily habits. A great night of sleep starts with the choices you make long before you get into bed.",
+        "A restful night starts with the choices you make long before you get into bed. Look closely at the routine you have now and what you want to change.",
       items: [],
       prompt:
         "Do you have a ritual to shut down your day and calm your mind? If you do, name two specific ways you could improve it. If you don't, name three things you could put in place to prepare your body and mind for a restorative night's sleep. Then widen the lens: are your current eating and sleeping habits helping or getting in the way of the college experience you want? Describe what would change — in the next few weeks and in the longer run — if you committed to eating well and sleeping well for the rest of this term.",
@@ -213,7 +213,7 @@ export const ch11: Chapter = {
       kind: 'checklist',
       estMinutes: 2,
       intro:
-        'Concrete first steps pulled straight from the chapter. Pick one to start with — you do not need to do them all this week.',
+        'Pick one small wellness step to start with — you do not need to do them all this week.',
       items: [
         { id: 'c11-a3-1', text: 'Choose a bedtime and wake time you can keep most days, and set an alarm for the wind-down, not just the wake-up.' },
         { id: 'c11-a3-2', text: 'Set your room up for sleep: cool (around 65 degrees), as dark as you can get it, and quiet — a sleep mask or earplugs can help.' },

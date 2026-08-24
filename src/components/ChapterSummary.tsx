@@ -38,7 +38,7 @@ export default function ChapterSummary({
         <button
           type="button"
           onClick={toggleAll}
-          className="min-h-[44px] text-sm font-medium text-brand underline underline-offset-4"
+          className="min-h-[44px] text-sm font-medium text-brand underline underline-offset-4 dark:text-clu-goldAlt"
         >
           {allOpen ? 'Collapse all' : 'Expand all'}
         </button>
@@ -55,8 +55,16 @@ export default function ChapterSummary({
             open={i === 0}
             className="group overflow-hidden rounded-2xl border border-line bg-surface [&>summary::-webkit-details-marker]:hidden"
           >
-            <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold">
-              <span>{section.heading}</span>
+            <summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold">
+              <span className="flex min-w-0 items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[color:var(--accent)]/15 text-xs font-bold text-[color:var(--accent-text)]"
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span>{section.heading}</span>
+              </span>
               <span
                 aria-hidden="true"
                 className="flex-none text-body transition-transform group-open:rotate-180"

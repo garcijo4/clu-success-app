@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getChapter } from '@/content';
+import { getChapterTitle } from '@/content/catalog';
 import ChatEmbed from '@/components/ChatEmbed';
 import { copyText } from '@/lib/exportReflections';
 import Footer from '@/components/Footer';
@@ -15,14 +15,19 @@ const EXAMPLES = [
 
 function AskInner() {
   const params = useSearchParams();
-  const question = params.get('q') ?? '';
+  const question = (params.get('q') ?? '').slice(0, 300);
   const topic = params.get('topic') ?? '';
-  const chapter = topic ? getChapter(topic) : undefined;
+  const chapterTitle = topic ? getChapterTitle(topic) : undefined;
+  const startingQuestion =
+    question ||
+    (chapterTitle
+      ? `What are the most important ideas in ${chapterTitle}, and how can I use one this week?`
+      : '');
 
-  const [text, setText] = useState(question);
+  const [text, setText] = useState(startingQuestion);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => setText(question), [question]);
+  useEffect(() => setText(startingQuestion), [startingQuestion]);
 
   // Auto-copy on arrival so the student can paste straight into the chat.
   useEffect(() => {
@@ -43,10 +48,35 @@ function AskInner() {
         Lutheran.
       </p>
 
-      {question && (
+      {!text ? (
+        <section className="mb-4 rounded-2xl border border-line bg-surface p-4">
+          <h2 className="font-display text-lg font-semibold">Try a question</h2>
+          <p className="mt-1 text-sm text-body">Tap one to copy it, then paste it into the chat.</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {EXAMPLES.map((example) => (
+              <li key={example}>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setText(example);
+                    const ok = await copyText(example);
+                    setCopied(ok);
+                    setTimeout(() => setCopied(false), 3000);
+                  }}
+                  className="min-h-[44px] rounded-full border border-line bg-bg px-3 py-2 text-left text-sm text-body hover:border-brand hover:text-brand dark:hover:border-clu-goldAlt dark:hover:text-clu-goldAlt"
+                >
+                  {example}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {text && (
         <section className="mb-4 rounded-2xl border-2 border-clu-gold bg-clu-gold/10 p-4">
           <h2 className="text-sm font-semibold">
-            Your question{chapter ? ` about ${chapter.title}` : ''}
+            Your question{chapterTitle ? ` about ${chapterTitle}` : ''}
           </h2>
           <label htmlFor="composed" className="sr-only">
             Your question — edit it if you like
@@ -69,23 +99,20 @@ function AskInner() {
           >
             {copied ? 'Copied — paste it into the chat below ✓' : 'Copy question'}
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              setText('');
+              setCopied(false);
+            }}
+            className="ml-3 min-h-[44px] text-sm font-medium text-brand underline underline-offset-4 dark:text-clu-goldAlt"
+          >
+            Choose another
+          </button>
         </section>
       )}
 
-      <ChatEmbed question={question || undefined} />
-
-      <section className="mt-5">
-        <h2 className="mb-2 text-sm font-semibold text-body">Not sure what to ask?</h2>
-        <ul className="flex flex-wrap gap-2">
-          {EXAMPLES.map((example) => (
-            <li key={example}>
-              <span className="inline-block rounded-full border border-line bg-surface px-3 py-2 text-sm text-body">
-                {example}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ChatEmbed />
 
       <Footer />
     </div>
