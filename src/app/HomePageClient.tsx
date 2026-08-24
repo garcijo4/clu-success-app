@@ -173,7 +173,7 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
                   }
                   data-accent
                   style={accentStyle(chapter.themeColor, chapter.themeColorDark)}
-                  className="block rounded-2xl border border-line bg-surface p-4"
+                  className="chapter-card block rounded-2xl border border-line bg-surface p-4"
                 >
                   <span className="block text-sm text-body">Chapter {chapter.number}</span>
                   <span className="block font-semibold">{chapter.title}</span>
@@ -210,7 +210,7 @@ export default function HomePageClient({ chapters }: { chapters: HomeChapter[] }
                   href={`/chapters/${chapter.slug}`}
                   data-accent
                   style={accentStyle(chapter.themeColor, chapter.themeColorDark)}
-                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
+                  className="chapter-card flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
                 >
                   <span className="h-1.5 w-full bg-[color:var(--accent)]" />
                   <span className="flex flex-1 flex-col p-3">
