@@ -7,12 +7,6 @@ import ChatEmbed from '@/components/ChatEmbed';
 import { copyText } from '@/lib/exportReflections';
 import Footer from '@/components/Footer';
 
-const EXAMPLES = [
-  'How do I stop procrastinating?',
-  "What's a growth mindset?",
-  'How should I take notes in a lecture class?',
-];
-
 function AskInner() {
   const params = useSearchParams();
   const question = (params.get('q') ?? '').slice(0, 300);
@@ -42,37 +36,6 @@ function AskInner() {
 
   return (
     <div>
-      <h1 className="font-display text-xl font-semibold">Ask</h1>
-      <p className="mb-4 text-sm text-body">
-        Ask anything about the College Success book — or about college life at Cal
-        Lutheran.
-      </p>
-
-      {!text ? (
-        <section className="mb-4 rounded-2xl border border-line bg-surface p-4">
-          <h2 className="font-display text-lg font-semibold">Try a question</h2>
-          <p className="mt-1 text-sm text-body">Tap one to copy it, then paste it into the chat.</p>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {EXAMPLES.map((example) => (
-              <li key={example}>
-                <button
-                  type="button"
-                  onClick={async () => {
-                    setText(example);
-                    const ok = await copyText(example);
-                    setCopied(ok);
-                    setTimeout(() => setCopied(false), 3000);
-                  }}
-                  className="min-h-[44px] rounded-full border border-line bg-bg px-3 py-2 text-left text-sm text-body hover:border-brand hover:text-brand dark:hover:border-clu-goldAlt dark:hover:text-clu-goldAlt"
-                >
-                  {example}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-
       {text && (
         <section className="mb-4 rounded-2xl border-2 border-clu-gold bg-clu-gold/10 p-4">
           <h2 className="text-sm font-semibold">
